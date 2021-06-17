@@ -1,0 +1,55 @@
+<h1>Angular Search</h1>
+<!-- search form-->
+<div>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="titleId">Enter Title or Id*</label><i>(Required)</i>
+       <input type="text" formControlName="title" id="titleId" placeholder="Enter title"/>
+    </div>
+    <br/>
+    <div>
+        <label for="yearId">Enter Year</label>
+       <input type="text" formControlName="year" id="yearId" placeholder="Enter year"/>
+    </div>
+    <br/>
+    <!-- <div>
+        <label for="typeId">Enter Type</label>
+       <input type="text" formControlName="type" id="typeId" placeholder="Enter type"/>
+    </div>
+    <br/> -->
+    <div>
+        <label for="typeId">Enter Type</label>
+       <select [(ngModel)]="selectedType" name="typeName" (change)="selectedTypeMethod()" 
+       [ngModelOptions]="{standalone: true}" id="typeId">
+           <option>movie(default)</option>
+           <option>series</option>
+           <option>episode</option>
+       </select>
+    </div>
+    <br/>
+    <!-- <div>
+        <label for="plotId">Enter Plot</label>
+       <input type="text" formControlName="plot" id="plotId" placeholder="Enter plot"/>
+    </div>
+    <br/> -->
+    <div>
+        <label for="plotId">Enter Plot</label>
+       <select [(ngModel)]="selectedPlot" name="plotName" (change)="selectedPlotMethod()" 
+       [ngModelOptions]="{standalone: true}" id="typePlot">
+           <option>short (default)</option>
+           <option>full</option>
+       </select>
+    </div>
+    <br/>
+    <div>
+        <button type="submit" >Search</button>
+    </div>
+  </form>
+</div>
+
+<!-- default searches -->
+<!-- when search, change to search result -->
+
+<div *ngIf="data">
+    <div>{{data.title}}</div>
+</div>
